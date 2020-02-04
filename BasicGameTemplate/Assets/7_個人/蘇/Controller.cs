@@ -51,7 +51,7 @@ public class Controller : MonoBehaviour
                 PS4_Controller = 1;
                 Xbox_One_Controller = 0;
             }
-            else
+            else if (names[x].Length >= 20)
             {
                 //Debug.Log(string.Format("<color=#ff0000>{0}</color>", "Xbox 360 CONTROLLER IS CONNECTED"));
                 //set a controller bool to true
@@ -187,16 +187,16 @@ public class Controller : MonoBehaviour
                 print("Ps4RightStickHorizontal:" + Ps4RightStickHorizontal);
                 print("Ps4RightStickVertical:" + Ps4RightStickVertical);
             }
-            //Ps4LTrigger = 4th Axis (-1.0f to 1.0f range, unpressed is -1.0f)
-            if (Ps4LTrigger > -0.95f)
-            {
-                print("Ps4LTrigger:" + Ps4LTrigger);
-            }
-            //Ps4RTrigger = 5th Axis (-1.0f to 1.0f range, unpressed is -1.0f)
-            if (Ps4RTrigger > -0.95f)
-            {
-                print("Ps4RTrigger:" + Ps4RTrigger);
-            }
+            ////Ps4LTrigger = 4th Axis (-1.0f to 1.0f range, unpressed is -1.0f)
+            //if (Ps4LTrigger > -0.95f)
+            //{
+            //    print("Ps4LTrigger:" + Ps4LTrigger);
+            //}
+            ////Ps4RTrigger = 5th Axis (-1.0f to 1.0f range, unpressed is -1.0f)
+            //if (Ps4RTrigger > -0.95f)
+            //{
+            //    print("Ps4RTrigger:" + Ps4RTrigger);
+            //}
             ////////////////////////////
             //GetPs4Button
             //Ps4ViewButton
