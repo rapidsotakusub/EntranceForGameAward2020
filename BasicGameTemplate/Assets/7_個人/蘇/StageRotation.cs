@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class StageRotation : MonoBehaviour
 {
-    //public Space m_RotateSpace;
-    //public float m_RotateSpeed = 20f;
+    float CurrentAngle;
+    float OldAngle;
+    bool LeftRotateFlag = false;
+    bool RightRotateFlag = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        CurrentAngle = 0f;
+        OldAngle = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //transform.Rotate(Vector3.forward * m_RotateSpeed * Time.deltaTime, m_RotateSpace);
 
-        //transform.Rotate(Vector3.up * m_RotateSpeed * Time.deltaTime, m_RotateSpace);
 
         //do something
         //GetAxis(全部で７Axis)
@@ -87,14 +90,17 @@ public class StageRotation : MonoBehaviour
         //LButton
         if (Input.GetButtonDown("LButton"))
         {
-            transform.Rotate(0, 0, 90);
+            //transform.Rotate(0, 0, 90);
             print("LButton");
+            LeftRotateFlag = true;
+
         }
         //RButton
         if (Input.GetButtonDown("RButton"))
         {
-            transform.Rotate(0, 0, -90);
+            //transform.Rotate(0, 0, -90);
             print("RButton");
+            RightRotateFlag = true;
         }
         //LeftStickDown
         if (Input.GetButtonDown("LeftStickDown"))
@@ -106,5 +112,36 @@ public class StageRotation : MonoBehaviour
         {
             print("RightStickDown");
         }
+
+        //LeftRotation
+        if (LeftRotateFlag)
+        {
+            OldAngle = CurrentAngle;
+            if ((transform.eulerAngles.z - OldAngle) < 90)
+            {
+                transform.Rotate(0, 0, Time.deltaTime * 90 * 2, Space.World);
+            }
+            else
+            {
+                LeftRotateFlag = false; //停止
+                CurrentAngle = transform.eulerAngles.z;
+            }
+        }
+        //RightRotation
+        if (RightRotateFlag)
+        {
+            OldAngle = CurrentAngle;
+            if ((transform.eulerAngles.z - OldAngle) < -90)
+            {
+                transform.Rotate(0, 0, -Time.deltaTime * 9 * 2, Space.World);
+            }
+            else
+            {
+                RightRotateFlag = false; //停止
+                CurrentAngle = transform.eulerAngles.z;
+            }
+
+        }
     }
+
 }
