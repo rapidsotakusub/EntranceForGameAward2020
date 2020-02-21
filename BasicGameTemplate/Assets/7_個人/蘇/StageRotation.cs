@@ -51,6 +51,23 @@ public class StageRotation : MonoBehaviour
             {
                 currentTargetAngels = Quaternion.Euler(0, 0, 0f);
             }
+        //    //PlayerRotation
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 0, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 90f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 90f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 180f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, -180f,0) || PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 180f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, -90f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, -90f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 0, 0);
+        //    }
         }
         //RButton
         if (Input.GetButtonDown("RButton") && LeftRotateFlag == false && RightRotateFlag == false)
