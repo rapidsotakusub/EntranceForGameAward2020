@@ -5,11 +5,11 @@ using UnityEngine;
 public class StageRotation : MonoBehaviour
 {
     //Stageについて
-    float rotateSpeed = 2f;
-    Quaternion currentTargetAngels;
-    Quaternion oldTargetAngels;
-    bool LeftRotateFlag = false;
-    bool RightRotateFlag = false;
+    public static float rotateSpeed = 2f;
+    public static Quaternion currentTargetAngels;
+    public static Quaternion oldTargetAngels;
+    public static bool LeftRotateFlag = false;
+    public static bool RightRotateFlag = false;
     public  Rigidbody Player;
     public Transform PlayerTransform;
     public static bool MoveFlag = true;
@@ -51,6 +51,23 @@ public class StageRotation : MonoBehaviour
             {
                 currentTargetAngels = Quaternion.Euler(0, 0, 0f);
             }
+        //    //PlayerRotation
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 0, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 90f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 90f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 180f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, -180f,0) || PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, 180f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, -90f, 0);
+        //    }
+        //    if (PlayerController.oldPlayerTargetAngels == Quaternion.Euler(0, -90f, 0))
+        //    {
+        //        PlayerController.currentPlayerTargetAngels = Quaternion.Euler(0, 0, 0);
+        //    }
         }
         //RButton
         if (Input.GetButtonDown("RButton") && LeftRotateFlag == false && RightRotateFlag == false)
@@ -92,15 +109,7 @@ public class StageRotation : MonoBehaviour
                 transform.rotation = currentTargetAngels;        //旋转到目标角度     
                 LeftRotateFlag = false;                          //停止旋转停止旋转,恢复到可以旋转的状态
             }
-            //PlayerRotation
-            //  用 slerp 进行插值平滑的旋转
-            PlayerTransform.rotation = Quaternion.Slerp(PlayerTransform.rotation, currentTargetAngels, rotateSpeed * Time.deltaTime);
-            // 当初始角度跟目标角度小于1,将目标角度赋值给初始角度,让旋转角度是我们需要的角度
-            if (Quaternion.Angle(currentTargetAngels, transform.rotation) < 1)
-            {
-                transform.rotation = currentTargetAngels;        //旋转到目标角度     
-                LeftRotateFlag = false;                          //停止旋转停止旋转,恢复到可以旋转的状态
-            }
+
         }     
         //RightRotation
         else if (RightRotateFlag)
