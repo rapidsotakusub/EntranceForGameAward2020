@@ -129,7 +129,7 @@ public class StageRotation : MonoBehaviour
         else
         {
             Player.useGravity = true;  //Default状況でPlayerの重力があります
-            if (FootCollision.grounded == true)
+            if (PlayerController.grounded == true)
             {
                 MoveFlag = true;
             }
